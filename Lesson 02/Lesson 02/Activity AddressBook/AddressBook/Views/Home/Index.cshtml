@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AddressBook.Models.Person>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>Contact Details</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            <ul>
+                @foreach (var contact in item.ContactDetails)
+                {
+                    <li>@contact.Details</li>
+                }
+            </ul>
+        </td>
+    </tr>
+}
+
+</table>

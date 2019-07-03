@@ -1,0 +1,50 @@
+﻿@model OnlineQuiz.Models.Quiz
+
+<div>
+    <h4>Quiz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<div>
+    <h5>Players</h5>
+    <table style="border: 1px solid black;">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var player in Model.Players)
+        {
+            <tr>
+                <td style="border: 1px solid black;">@player.Name</td>
+                <td style="border: 1px solid black;">0</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<div>
+    <h5>Questions</h5>
+    <table style="border: 1px solid black;">
+        <thead>
+        <tr>
+            <th>Category</th>
+            <th>Question</th>
+            <th>Answer</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var question in Model.Questions)
+        {
+            <tr>
+                <td style="border: 1px solid black;">@question.Category.Description</td>
+                <td style="border: 1px solid black;">@question.Description</td>
+                <td style="border: 1px solid black;">@question.Answer</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
