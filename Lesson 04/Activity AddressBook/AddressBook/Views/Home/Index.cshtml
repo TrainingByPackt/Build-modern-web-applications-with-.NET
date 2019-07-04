@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AddressBook.Models.Person>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            Contact Details
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.LastName, "Detail", new { @id = item.Id })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                <ul>
+                    @foreach (var contact in item.ContactDetails)
+                    {
+                        @Html.Partial("_ContactDetails", contact)
+                    }
+                </ul>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { @id = item.Id }) | @Html.ActionLink("Delete", "Delete", new { @id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
